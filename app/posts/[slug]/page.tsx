@@ -4,6 +4,7 @@ import { Post } from "@/schema";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText, PortableTextComponents, PortableTextReactComponents } from "@portabletext/react";
+import { Metadata } from "next";
 
 const client = createClient({
   projectId: '72uhp6fc',
@@ -26,7 +27,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
   const components: PortableTextComponents = {
     block: {
         normal: ({children}) => <p className="mb-8">{children}</p>,
-        blockquote: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
+        blockquote: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
         h2: ({children}) => <div className="flex justify-center mb-8"><p>&#43612;</p></div>
     },
     marks: {
@@ -75,4 +76,15 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
 export async function generateStaticParams() {
     const posts = await client.fetch(`*[_type == "post"]`) as Post[]
     return posts.map(post => ({ slug: post.slug?.current }))
+}
+
+export async function generateMetadata({ params }: { params: { slug: string }}) {
+
+    const slug = params.slug
+    const post = await client.fetch(`*[_type == "post" && slug.current == $slug][0]`, {slug}) as Post
+
+    return {
+        title: `${post.title} | Patrick's Secret Diary`,
+        description: post.description
+    }
 }

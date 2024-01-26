@@ -4,6 +4,7 @@ import { Post } from "@/schema";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
+
 const client = createClient({
   projectId: '72uhp6fc',
   dataset: 'production',
@@ -55,7 +56,7 @@ export default async function Home() {
                 <div className="flex flex-col gap-2">
                   <h6 className="text-xs">{post.genre?.toUpperCase()}</h6>
                   <h3 className="text-xl font-bold">{post.title}</h3>
-                  <p className="italic">{post.description}</p>
+                  <p className="text-sm md:text-md italic">{post.description}</p>
                   <h6 className="text-xs">{new Date(post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}</h6>
                 </div>
               </div>
