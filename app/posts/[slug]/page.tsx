@@ -65,6 +65,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
         </div>
         <div className="text-xl leading-9">
             <PortableText value={post.body} components={components} />
+            <p className="text-center">&#9737;</p>
         </div>
       </div>
     </main>
