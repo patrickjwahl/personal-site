@@ -26,7 +26,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
   const components: PortableTextComponents = {
     block: {
         normal: ({children}) => <p className="mb-8">{children}</p>,
-        blockquote: ({children}) => <div className="mb-8 px-24"><blockquote className="text-3xl font-bold px-8  border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
+        blockquote: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
         h2: ({children}) => <div className="flex justify-center mb-8"><p>&#43612;</p></div>
     },
     marks: {
@@ -52,7 +52,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
           <h1 className="text-2xl font-bold hover:underline inline-block">Patrick&apos;s Secret Diary</h1>
         </a>
       </div>
-      <div className="flex flex-col gap-4 md:px-24 2xl:px-80">
+      <div className="flex flex-col gap-4 md:px-24 xl:px-48 2xl:px-80">
         <h1 className="text-3xl lg:text-4xl font-bold">{post.title}</h1>
         <h3 className="text-xl">{post.description}</h3>
         <div className="flex justify-between">
@@ -63,7 +63,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
         <div className="w-full h-big relative mb-4">
             <Image style={{objectFit: 'cover'}} fill src={urlFor(post.image as SanityImageSource).url()} alt="thumbnail" /> 
         </div>
-        <div className="text-xl leading-9">
+        <div className="text-md sm:text-xl leading-7 sm:leading-9">
             <PortableText value={post.body} components={components} />
             <p className="text-center">&#9737;</p>
         </div>
