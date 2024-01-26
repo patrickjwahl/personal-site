@@ -20,7 +20,7 @@ function urlFor(source: SanityImageSource) {
 
 export default async function Home() {
 
-  const posts = await client.fetch(`*[_type == "post"] | order(_createdAt desc)`) as Post[]
+  const posts = await client.fetch(`*[_type == "post"] | order(date desc)`) as Post[]
 
   return (
     <main className="flex p-8 pt-16 lg:pt-24 lg:p-48 min-h-screen flex-col items-left gap-16 lg:gap-24 p-24">
@@ -36,7 +36,7 @@ export default async function Home() {
             <div className="w-full h-80 lg:h-96 relative">
               <Image style={{objectFit: 'cover'}} fill src={urlFor(posts[0].image as SanityImageSource).url()} alt="thumbnail" /> 
             </div>
-            <h6 className="text-sm">{new Date(posts[0]._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}</h6>
+            <h6 className="text-sm">{new Date(posts[0].date || posts[0]._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</h6>
             <h3 className="text-3xl lg:text-6xl font-bold">{posts[0].title}</h3>
             <p className="text-xl italic">{posts[0].description}</p>
           </div>
@@ -57,7 +57,7 @@ export default async function Home() {
                   <h6 className="text-xs">{post.genre?.toUpperCase()}</h6>
                   <h3 className="text-xl font-bold">{post.title}</h3>
                   <p className="text-sm md:text-md italic">{post.description}</p>
-                  <h6 className="text-xs">{new Date(post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}</h6>
+                  <h6 className="text-xs">{new Date(post.date || post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</h6>
                 </div>
               </div>
             </div>

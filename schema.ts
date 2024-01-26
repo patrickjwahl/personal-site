@@ -78,6 +78,13 @@ export interface Post extends SanityDocument {
   };
 
   /**
+   * Date — `date`
+   *
+   *
+   */
+  date?: string;
+
+  /**
    * Body — `array`
    *
    *

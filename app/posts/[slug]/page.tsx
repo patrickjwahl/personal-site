@@ -29,7 +29,10 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
         normal: ({children}) => <p className="mb-8">{children}</p>,
         blockquote: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
         h3: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
-        h2: ({children}) => <div className="flex justify-center mb-8"><p>&#43612;</p></div>
+        h2: ({children}) => <div className="flex justify-right mb-8"><p>&#43612;</p></div>,
+        h1: ({children}) => <h2 className="text-2xl font-bold mt-4 mb-4">{children}</h2>,
+        h4: ({children}) => <br />,
+        h5: ({children}) => <p className="ml-8">{children}</p>
     },
     marks: {
         link: ({value, children}) => {
@@ -59,15 +62,15 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
         <h3 className="text-xl">{post.description}</h3>
         <div className="flex justify-between">
             <h6 className="text-sm">{post.genre?.toUpperCase()}</h6>
-            <h6 className="text-sm">{new Date(post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}</h6>
+            <h6 className="text-sm">{new Date(post.date || post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</h6>
         </div>
         <hr className="w-full h-0.5 bg-slate-950"></hr>
         <div className="w-full h-big relative mb-4">
-            <Image style={{objectFit: 'cover'}} fill src={urlFor(post.image as SanityImageSource).url()} alt="thumbnail" /> 
+            <Image style={{height: '100%', objectFit: 'cover'}} fill src={urlFor(post.image as SanityImageSource).url()} alt="thumbnail" /> 
         </div>
         <div className="text-md sm:text-xl leading-7 sm:leading-9">
             <PortableText value={post.body} components={components} />
-            <p className="text-center">&#9737;</p>
+            <p className="text-right">&#9737;</p>
         </div>
       </div>
     </main>

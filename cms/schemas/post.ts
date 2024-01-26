@@ -24,6 +24,11 @@ export default {
             title: 'Image'
         },
         {
+            name: 'date',
+            type: 'date',
+            title: "Date"
+        },
+        {
             name: 'body',
             type: 'array',
             title: 'Body',
