@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const argesta = localFont({ 
+  src: '../argestadisplay-regular-webfont.woff2', 
+  variable: '--font-argesta' })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${argesta.variable} font-title`}>{children}
+        <footer className="flex justify-center p-8 text-sm">
+          <p>&copy;{new Date().getFullYear()} Patrick J. Wahl</p>
+        </footer>
+      </body>
     </html>
   );
 }
