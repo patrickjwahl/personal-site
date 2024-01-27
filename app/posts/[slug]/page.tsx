@@ -66,7 +66,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
             <h6 className="text-sm">{new Date(post.date || post._createdAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</h6>
         </div>
         <hr className="w-full h-0.5 bg-slate-950"></hr>
-        <div className="w-full h-big relative mb-4">
+        <div className="w-full h-64 md:h-big relative mb-4">
             <Image style={{height: '100%', objectFit: 'cover'}} fill src={urlFor(post.image as SanityImageSource).url()} alt="thumbnail" /> 
         </div>
         <div className="text-md sm:text-xl leading-7 sm:leading-9">
