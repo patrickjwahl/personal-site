@@ -28,7 +28,7 @@ export default async function PostPage({ params }: { params: { slug: string }}) 
     block: {
         normal: ({children}) => <p className="mb-8">{children}</p>,
         blockquote: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
-        h3: ({children}) => <div className="mb-8 px-8 md:px-24"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
+        h3: ({children}) => <div className="mb-8 px-8 py-8"><blockquote className="text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold px-8 border-l-4 border-slate-950 border-solid">{children}</blockquote></div>,
         h2: ({children}) => <div className="flex justify-center mb-8"><p>&#43612;</p></div>,
         h1: ({children}) => <h2 className="text-lg md:text-2xl font-bold mt-4 mb-4">{children}</h2>,
         h4: ({children}) => <br />,
