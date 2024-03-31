@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: { slug: string }}) 
     const post = await client.fetch(`*[_type == "post" && slug.current == $slug][0]`, {slug}) as Post
 
     return {
-        title: `${post.title} | Patrick's Secret Diary`,
+        title: `${post.title} | Patrick's Scribblings`,
         description: post.description
     }
 }

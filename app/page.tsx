@@ -26,7 +26,7 @@ export default async function Home() {
     <main className="flex p-8 pt-16 lg:pt-24 lg:p-48 min-h-screen flex-col items-left gap-16 lg:gap-24 p-24">
       <div className="flex">
         <a href='/' className="-mb-8 lg:mb-0">
-          <h1 className="text-2xl font-bold hover:underline inline-block">Patrick&apos;s Secret Diary</h1>
+          <h1 className="text-2xl font-bold hover:underline inline-block">Patrick&apos;s Scribblings</h1>
         </a>
       </div>
       <div className="flex flex-col items-center gap-8">

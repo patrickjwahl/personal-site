@@ -7,7 +7,7 @@ const argesta = localFont({
   variable: '--font-argesta' })
 
 export const metadata: Metadata = {
-  title: "Patrick's Secret Diary",
+  title: "Patrick's Scribblings",
   description: "No peeking.",
 };
 
